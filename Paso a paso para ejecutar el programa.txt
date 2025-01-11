@@ -1,0 +1,131 @@
+1. Pre-requisitos
+Asegúrate de tener lo siguiente instalado en tu computadora:
+
+Python 3.x
+Verifica si tienes Python instalado ejecutando:
+
+bash
+Copiar código
+python --version
+o
+
+bash
+Copiar código
+python3 --version
+Si no lo tienes, descárgalo e instálalo desde Python.org.
+
+Git (opcional, si vas a clonar el proyecto desde GitHub)
+Verifica si tienes Git instalado ejecutando:
+
+bash
+Copiar código
+git --version
+Si no lo tienes, descárgalo desde Git Downloads.
+
+Instalar un Editor de Código (opcional)
+Se recomienda usar Visual Studio Code (VS Code) para facilitar el manejo del proyecto.
+
+2. Descargar el Proyecto
+Existen dos formas de obtener el proyecto:
+
+a) Si el proyecto está en GitHub:
+Clona el repositorio:
+bash
+Copiar código
+git clone https://github.com/tu-usuario/sacce-system.git
+Accede a la carpeta del proyecto:
+bash
+Copiar código
+cd sacce-system
+b) Si tienes los archivos en una carpeta:
+Copia la carpeta del proyecto a un lugar en tu computadora donde puedas trabajar con ella.
+3. Crear y Activar un Entorno Virtual
+Se recomienda usar un entorno virtual para evitar conflictos con otras dependencias en tu sistema.
+
+a) Crear el entorno virtual:
+Desde la terminal, en la carpeta del proyecto, ejecuta:
+bash
+Copiar código
+python -m venv env
+Esto creará una carpeta llamada env que contendrá el entorno virtual.
+b) Activar el entorno virtual:
+En Windows:
+bash
+Copiar código
+.\env\Scripts\activate
+En macOS/Linux:
+bash
+Copiar código
+source env/bin/activate
+Cuando el entorno virtual esté activado, deberías ver algo como (env) al inicio de tu terminal.
+
+4. Instalar las Dependencias
+El proyecto utiliza varias librerías de Python. Estas dependencias se encuentran en el archivo requirements.txt.
+
+Instala las dependencias ejecutando:
+bash
+Copiar código
+pip install -r requirements.txt
+Esto instalará todas las librerías necesarias como Flask, Pandas, ReportLab, etc.
+
+5. Configurar la Base de Datos
+El sistema utiliza una base de datos SQLite. Si ya tienes el archivo de la base de datos (attendance.db), verifica que esté en la carpeta database.
+
+a) Crear la carpeta y base de datos (si no existe):
+Crea una carpeta llamada database dentro del proyecto:
+bash
+Copiar código
+mkdir database
+Si no tienes el archivo attendance.db, puedes crearlo con el siguiente script SQL (usa cualquier cliente SQLite como DB Browser o ejecuta un script Python):
+sql
+Copiar código
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    role TEXT NOT NULL
+);
+
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    identification TEXT NOT NULL,
+    grade TEXT NOT NULL
+);
+
+CREATE TABLE attendance (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER NOT NULL,
+    date TEXT NOT NULL,
+    status TEXT NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students (id)
+);
+
+-- Agregar un usuario por defecto
+INSERT INTO users (username, password, role) VALUES ('admin', 'admin123', 'admin');
+6. Ejecutar el Sistema
+Desde la terminal, asegúrate de estar en la carpeta principal del proyecto.
+Ejecuta el archivo principal del sistema (generalmente app.py):
+bash
+Copiar código
+python app.py
+Si todo está configurado correctamente, deberías ver algo como:
+csharp
+Copiar código
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+7. Abrir el Sistema en el Navegador
+Abre tu navegador preferido.
+Ve a la dirección:
+arduino
+Copiar código
+http://127.0.0.1:5000/
+Esto cargará la página de inicio de tu sistema.
+8. Probar Funcionalidades
+Inicio de sesión: Ingresa con las credenciales predefinidas en la base de datos (por ejemplo, admin/admin123).
+Registrar asistencia, agregar estudiantes, generar reportes: Asegúrate de que todas las funcionalidades principales estén funcionando correctamente.
+9. Detener el Sistema
+Para detener el sistema, ve a la terminal donde está ejecutándose y presiona CTRL+C.
+10. Notas Finales
+Si realizas cambios en el código, asegúrate de reiniciar el servidor Flask.
+Si necesitas migrar a otro equipo, asegúrate de incluir los archivos del proyecto y la base de datos.
