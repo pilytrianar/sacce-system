@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Estudiante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/add_student.css') }}" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 text-primary">Añadir Estudiante</h1>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div>
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} text-center">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center mb-3">Registro Individual</h2>
+                <form method="POST" action="/add_student">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="identification" class="form-label">Documento de Identificación:</label>
+                        <input type="text" id="identification" name="identification" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="grade" class="form-label">Grado o Curso:</label>
+                        <input type="text" id="grade" name="grade" class="form-control" required>
+                    </div>
+                    <button type="submit" name="add_student" class="btn btn-primary w-100">Registrar Estudiante</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="text-center mb-3">Carga Masiva (Excel)</h2>
+                <form method="POST" enctype="multipart/form-data" action="/add_student">
+                    <div class="mb-3">
+                        <label for="upload_excel" class="form-label">Seleccionar Archivo Excel (.xlsx):</label>
+                        <input type="file" id="upload_excel" name="upload_excel" class="form-control" accept=".xlsx" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Subir Archivo</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

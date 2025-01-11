@@ -1,0 +1,56 @@
+/* Fondo general */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
+.welcome-title {
+    font-size: 2.5rem;
+    color: #007bff; /* Azul principal */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.user-role {
+    font-size: 1.25rem;
+    color: #495057; /* Gris oscuro */
+    margin-bottom: 30px;
+}
+
+/* Botones del menú */
+.menu-button {
+    display: block;
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+    transform: scale(1.05);
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsividad */
+@media (max-width: 576px) {
+    .menu-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .user-role {
+        font-size: 1rem;
+    }
+}

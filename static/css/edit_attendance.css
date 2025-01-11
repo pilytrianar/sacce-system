@@ -1,0 +1,49 @@
+/* Fondo general */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo de la tarjeta */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #ffc107; /* Amarillo Bootstrap */
+    color: #212529; /* Gris oscuro */
+    font-size: 1.5rem;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilo del formulario */
+form label {
+    font-weight: bold;
+    color: #495057;
+}
+
+form input, form select {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+form input:focus, form select:focus {
+    border-color: #ffc107; /* Amarillo Bootstrap */
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+}
+
+/* Botones */
+button, .btn {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #155724;
+    color: #fff;
+}

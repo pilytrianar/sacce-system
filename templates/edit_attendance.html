@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Asistencia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link href="{{ url_for('static', filename='css/edit_attendance.css') }}" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-dark text-center">
+                        <h2>Editar Registro de Asistencia</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/edit_attendance/{{ record[0] }}">
+                            <div class="mb-3">
+                                <label for="student_name" class="form-label">Nombre del Estudiante</label>
+                                <input type="text" id="student_name" name="student_name" class="form-control" value="{{ record[1] }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="form-label">Fecha</label>
+                                <input type="date" id="date" name="date" class="form-control" value="{{ record[2] }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="grade" class="form-label">Grado o Curso</label>
+                                <input type="text" id="grade" name="grade" class="form-control" value="{{ record[3] }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Estado</label>
+                                <select id="status" name="status" class="form-select" required>
+                                    <option value="Presente" {% if record[4] == "Presente" %}selected{% endif %}>Presente</option>
+                                    <option value="Ausente" {% if record[4] == "Ausente" %}selected{% endif %}>Ausente</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="/search_attendance" class="btn btn-secondary">Volver a Buscar</a>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="/" class="btn btn-primary">Volver al Inicio</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap Bundle con JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

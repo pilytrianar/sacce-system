@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asistencia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link href="{{ url_for('static', filename='css/list_attendance.css') }}" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white text-center">
+                        <h2>Lista de Registros de Asistencia</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre del Estudiante</th>
+                                    <th>Documento</th>
+                                    <th>Grado</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for record in records %}
+                                <tr>
+                                    <td>{{ record[0] }}</td>
+                                    <td>{{ record[1] }}</td>
+                                    <td>{{ record[2] }}</td>
+                                    <td>{{ record[3] }}</td>
+                                    <td>{{ record[4] if record[4] else 'Sin Registro' }}</td>
+                                    <td>{{ record[5] if record[5] else 'Sin Registro' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <a href="/download_csv" class="btn btn-success">Descargar CSV</a>
+                            <a href="/download_pdf" class="btn btn-danger">Descargar PDF</a>
+                            <a href="/download_excel" class="btn btn-warning">Descargar Excel</a>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap Bundle con JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
